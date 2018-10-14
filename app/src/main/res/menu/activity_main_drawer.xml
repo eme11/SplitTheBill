@@ -22,12 +22,12 @@
             android:title="Settings" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Manage">
         <menu>
             <item
                 android:id="@+id/nav_apartment"
-                android:icon="@drawable/ic_house"
-                android:title="Apartment" />
+                android:icon="@drawable/ic_add"
+                android:title="Create Apartment" />
             <item
                 android:id="@+id/nav_add_people"
                 android:icon="@drawable/ic_add"

@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/sign_up"
-    tools:context=".SignUpFragment">
+    tools:context=".ApartmentFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,38 +11,63 @@
         android:orientation="vertical"
         android:gravity="center">
 
-        <EditText
-            android:id="@+id/email_sign_up"
+        <TextView
+            android:id="@+id/add_apartment_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:hint="email"
             android:paddingBottom="15dp"
-            android:inputType="textEmailAddress"/>
+            android:textSize="25dp"
+            android:text="Create Apartment"
+            android:textAlignment="center"/>
+
         <EditText
-            android:id="@+id/password_sign_up"
+            android:id="@+id/add_apartment_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:hint="password"
-            android:paddingBottom="15dp"
-            android:inputType="textPassword"/>
-        <EditText
-            android:id="@+id/nickname"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:hint="nickname"
+            android:hint="apartment name"
             android:paddingBottom="15dp"
             android:inputType="text"/>
+
+        <EditText
+            android:id="@+id/add_apartment_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:hint="apartment address"
+            android:paddingBottom="15dp"
+            android:inputType="text"/>
+
+        <EditText
+            android:id="@+id/add_apartment_number_of_rooms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:hint="number of rooms"
+            android:paddingBottom="15dp"
+            android:inputType="text"/>
+
+        <EditText
+            android:id="@+id/add_apartment_rent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:hint="rent"
+            android:paddingBottom="15dp"
+            android:inputType="text"/>
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:id="@+id/button_sing_up_in_fragment_sign_up"
-            android:text="SIGN UP"
+            android:id="@+id/button_create_apartment"
+            android:text="CREATE APARTMENT"
             android:background="@color/colorPrimaryDark"
             android:textColor="@color/colorWhite"/>
+
+
+
     </LinearLayout>
 
 </FrameLayout>

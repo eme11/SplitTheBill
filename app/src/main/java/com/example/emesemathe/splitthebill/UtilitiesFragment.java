@@ -26,7 +26,7 @@ public class UtilitiesFragment extends Fragment implements View.OnClickListener{
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_utilities, container, false);
 
-        Button splitNow = (Button) view.findViewById(R.id.button_split);
+        Button splitNow = (Button) view.findViewById(R.id.button_split_now);
         splitNow.setOnClickListener(this);
 
         return view;
@@ -36,7 +36,7 @@ public class UtilitiesFragment extends Fragment implements View.OnClickListener{
     public void onClick(View v) {
         switch (v.getId())
         {
-            case R.id.button_split:
+            case R.id.button_split_now:
                 break;
         }
 

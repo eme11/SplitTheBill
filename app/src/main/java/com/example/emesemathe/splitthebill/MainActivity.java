@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity
     private  NavigationView navigationView_;
     private UtilitiesFragment utilities_;
     private LogInFragment logIn_;
+    private ApartmentFragment createApartment_;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity
 
         utilities_ = new UtilitiesFragment();
         logIn_ = new LogInFragment();
+        createApartment_ = new ApartmentFragment();
     }
 
     @Override
@@ -69,7 +71,7 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_sign_in) {
 
-            setTitle("Sign in");
+            setTitle("Sign in or Sign Up");
             manager = getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.flContent, logIn_ ).commit();
 
@@ -86,7 +88,9 @@ public class MainActivity extends AppCompatActivity
             setTitle("User Settings");
 
         } else if (id == R.id.nav_apartment) {
-            setTitle("Apartment");
+            setTitle("Create Apartment");
+            manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(R.id.flContent, createApartment_ ).commit();
 
         } else if (id == R.id.nav_add_people) {
             setTitle("Add People");

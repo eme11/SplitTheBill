@@ -13,17 +13,19 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:layout_margin="10dp"
             android:clickable="false"
             android:text="Last split : No split yet"
             android:textSize="25dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textAlignment="center"/>
+
         <Button
-            android:id="@+id/button_split"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/activity_horizontal_margin"
-            android:text="Split now"
+            android:layout_margin="10dp"
+            android:id="@+id/button_split_now"
+            android:text="SPLIT NOW"
             android:background="@color/colorPrimaryDark"
             android:textColor="@color/colorWhite"/>
 
