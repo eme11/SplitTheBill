@@ -20,7 +20,8 @@ public class MainActivity extends AppCompatActivity
     private  Toolbar toolbar_;
     private  DrawerLayout drawerLayout_;
     private  NavigationView navigationView_;
-    private UtilitiesFragment utilities_;
+    private UtilitiesFragment supplies_;
+    private UtilitiesMainFragment utilities_;
     private LogInFragment logIn_;
     private ApartmentFragment createApartment_;
     @Override
@@ -40,9 +41,10 @@ public class MainActivity extends AppCompatActivity
         navigationView_ = (NavigationView) findViewById(R.id.nav_view);
         navigationView_.setNavigationItemSelectedListener(this);
 
-        utilities_ = new UtilitiesFragment();
+        supplies_ = new UtilitiesFragment();
         logIn_ = new LogInFragment();
         createApartment_ = new ApartmentFragment();
+        utilities_ = new UtilitiesMainFragment();
     }
 
     @Override
@@ -75,19 +77,24 @@ public class MainActivity extends AppCompatActivity
             manager = getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.flContent, logIn_ ).commit();
 
+        } else if (id == R.id.nav_apartment) {
+            setTitle("Apartment");
+
         } else if (id == R.id.nav_split_utilities) {
             setTitle("Split Utilities");
+            manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(R.id.flContent, utilities_ ).commit();
 
         } else if (id == R.id.nav_split_household) {
 
             setTitle("Split household supplies");
             manager = getSupportFragmentManager();
-            manager.beginTransaction().replace(R.id.flContent, utilities_ ).commit();
+            manager.beginTransaction().replace(R.id.flContent, supplies_ ).commit();
 
         } else if (id == R.id.nav_settings) {
             setTitle("User Settings");
 
-        } else if (id == R.id.nav_apartment) {
+        } else if (id == R.id.nav_create_apartment) {
             setTitle("Create Apartment");
             manager = getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.flContent, createApartment_ ).commit();
@@ -97,12 +104,8 @@ public class MainActivity extends AppCompatActivity
 
         }
 
-
-
         item.setChecked(true);
         drawerLayout_.closeDrawers();
-        /*DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);*/
         return true;
     }
 }

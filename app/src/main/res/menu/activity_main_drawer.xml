@@ -8,6 +8,12 @@
             android:id="@+id/nav_sign_in"
             android:icon="@drawable/ic_user"
             android:title="Sign in" />
+
+        <item
+            android:id="@+id/nav_apartment"
+            android:icon="@drawable/ic_house"
+            android:title="My Apartment" />
+
         <item
             android:id="@+id/nav_split_utilities"
             android:icon="@drawable/ic_bill"
@@ -20,12 +26,13 @@
             android:id="@+id/nav_settings"
             android:icon="@drawable/ic_settings"
             android:title="Settings" />
+
     </group>
 
     <item android:title="Manage">
         <menu>
             <item
-                android:id="@+id/nav_apartment"
+                android:id="@+id/nav_create_apartment"
                 android:icon="@drawable/ic_add"
                 android:title="Create Apartment" />
             <item

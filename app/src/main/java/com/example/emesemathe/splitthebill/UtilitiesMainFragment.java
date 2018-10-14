@@ -6,18 +6,15 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ApartmentFragment extends Fragment implements View.OnClickListener{
+public class UtilitiesMainFragment extends Fragment {
 
 
-    private Button createApartment;
-
-    public ApartmentFragment() {
+    public UtilitiesMainFragment() {
         // Required empty public constructor
     }
 
@@ -26,16 +23,7 @@ public class ApartmentFragment extends Fragment implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_apartment, container, false);
-
-        createApartment = (Button) v.findViewById(R.id.button_create_apartment);
-        createApartment.setOnClickListener(this);
-
-        return v;
+        return inflater.inflate(R.layout.fragment_utilities_main, container, false);
     }
 
-    @Override
-    public void onClick(View v) {
-
-    }
 }

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UtilitiesMainFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/apartment_gas_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:paddingBottom="10dp"
+            android:textSize="20dp"
+            android:text="Gas"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/apartment_water_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:paddingBottom="10dp"
+            android:textSize="20dp"
+            android:text="Water"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/apartment_electricity_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:paddingBottom="10dp"
+            android:textSize="20dp"
+            android:text="Electricity"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/apartment_Internet_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:paddingBottom="10dp"
+            android:textSize="20dp"
+            android:text="Internet + TV"
+            android:textAlignment="center"/>
+
+
+    </LinearLayout>
+
+
+</FrameLayout>

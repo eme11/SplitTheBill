@@ -49,7 +49,7 @@ public class LogInFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.button_sign_up:
                 manager = getFragmentManager();
-                manager.beginTransaction().replace(R.id.sign_in, signUp_).commit();
+                // manager.beginTransaction().replace(R.id.flContent, signUp_).commit();
                 break;
         }
     }
