@@ -20,10 +20,13 @@ public class MainActivity extends AppCompatActivity
     private  Toolbar toolbar_;
     private  DrawerLayout drawerLayout_;
     private  NavigationView navigationView_;
+    private FragmentManager manager;
+
     private UtilitiesFragment supplies_;
     private UtilitiesMainFragment utilities_;
     private LogInFragment logIn_;
     private ApartmentFragment createApartment_;
+    private AboutFragment about_;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +48,11 @@ public class MainActivity extends AppCompatActivity
         logIn_ = new LogInFragment();
         createApartment_ = new ApartmentFragment();
         utilities_ = new UtilitiesMainFragment();
+        about_ = new AboutFragment();
+
+        setTitle("About");
+        manager = getSupportFragmentManager();
+        manager.beginTransaction().replace(R.id.flContent, about_ ).commit();
     }
 
     @Override
@@ -67,8 +75,7 @@ public class MainActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        FragmentManager manager ;
-        // Handle navigation view item clicks here.
+
         int id = item.getItemId();
 
         if (id == R.id.nav_sign_in) {
@@ -93,6 +100,11 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_settings) {
             setTitle("User Settings");
+
+        } else if (id == R.id.nav_about){
+            setTitle("About the app");
+            manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(R.id.flContent, about_ ).commit();
 
         } else if (id == R.id.nav_create_apartment) {
             setTitle("Create Apartment");
