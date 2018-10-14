@@ -9,12 +9,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-    <!-- TODO: Update blank fragment layout -->
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:clickable="false"
+            android:id="@+id/last_split_header"
             android:text="Last split : No split yet"
             android:textSize="25dp"
             android:textStyle="bold"
@@ -28,6 +29,67 @@
             android:text="SPLIT NOW"
             android:background="@color/colorPrimaryDark"
             android:textColor="@color/colorWhite"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:id="@+id/button_view_list_of_supplies"
+            android:text="VIEW LIST OF HOUSEHOLD SUPPLIES"
+            android:background="@color/colorPrimaryDark"
+            android:textColor="@color/colorWhite"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:clickable="false"
+            android:paddingStart="15dp"
+            android:id="@+id/add_supplies_empty_header"
+            android:text="  "
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:clickable="false"
+            android:paddingStart="15dp"
+            android:id="@+id/add_supplies_header"
+            android:text="Add household supplies"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:textAlignment="center"/>
+
+        <EditText
+            android:id="@+id/add_name_of_product"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:hint="name of product"
+            android:paddingBottom="15dp"
+            android:inputType="text"/>
+
+        <EditText
+            android:id="@+id/add_price_of_product"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:hint="price of product (only digits)"
+            android:paddingBottom="15dp"
+            android:inputType="text"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:id="@+id/button_add_household_supplies"
+            android:text="ADD"
+            android:background="@color/colorPrimaryDark"
+            android:textColor="@color/colorWhite"/>
+
 
 
     </LinearLayout>
