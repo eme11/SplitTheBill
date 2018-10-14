@@ -27,6 +27,9 @@ public class MainActivity extends AppCompatActivity
     private LogInFragment logIn_;
     private ApartmentFragment createApartment_;
     private AboutFragment about_;
+    private SettingsFragment settings_;
+    private MyApartmentFragment myApartmentFragment_;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +52,8 @@ public class MainActivity extends AppCompatActivity
         createApartment_ = new ApartmentFragment();
         utilities_ = new UtilitiesMainFragment();
         about_ = new AboutFragment();
+        settings_ = new SettingsFragment();
+        myApartmentFragment_ = new MyApartmentFragment();
 
         setTitle("About");
         manager = getSupportFragmentManager();
@@ -86,6 +91,8 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_apartment) {
             setTitle("Apartment");
+            manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(R.id.flContent, myApartmentFragment_ ).commit();
 
         } else if (id == R.id.nav_split_utilities) {
             setTitle("Split Utilities");
@@ -99,7 +106,9 @@ public class MainActivity extends AppCompatActivity
             manager.beginTransaction().replace(R.id.flContent, supplies_ ).commit();
 
         } else if (id == R.id.nav_settings) {
-            setTitle("User Settings");
+            setTitle("Settings");
+            manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(R.id.flContent, settings_ ).commit();
 
         } else if (id == R.id.nav_about){
             setTitle("About the app");
@@ -110,9 +119,6 @@ public class MainActivity extends AppCompatActivity
             setTitle("Create Apartment");
             manager = getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.flContent, createApartment_ ).commit();
-
-        } else if (id == R.id.nav_add_people) {
-            setTitle("Add People");
 
         }
 
