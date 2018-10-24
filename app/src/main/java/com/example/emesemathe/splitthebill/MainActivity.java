@@ -1,9 +1,12 @@
 package com.example.emesemathe.splitthebill;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,6 +16,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -24,7 +34,6 @@ public class MainActivity extends AppCompatActivity
 
     private UtilitiesFragment supplies_;
     private UtilitiesMainFragment utilities_;
-    private LogInFragment logIn_;
     private ApartmentFragment createApartment_;
     private AboutFragment about_;
     private SettingsFragment settings_;
@@ -48,7 +57,6 @@ public class MainActivity extends AppCompatActivity
         navigationView_.setNavigationItemSelectedListener(this);
 
         supplies_ = new UtilitiesFragment();
-        logIn_ = new LogInFragment();
         createApartment_ = new ApartmentFragment();
         utilities_ = new UtilitiesMainFragment();
         about_ = new AboutFragment();
@@ -83,11 +91,10 @@ public class MainActivity extends AppCompatActivity
 
         int id = item.getItemId();
 
-        if (id == R.id.nav_sign_in) {
+        if (id == R.id.nav_user) {
 
-            setTitle("Sign in or Sign Up");
-            manager = getSupportFragmentManager();
-            manager.beginTransaction().replace(R.id.flContent, logIn_ ).commit();
+            setTitle("Account");
+
 
         } else if (id == R.id.nav_apartment) {
             setTitle("Apartment");
