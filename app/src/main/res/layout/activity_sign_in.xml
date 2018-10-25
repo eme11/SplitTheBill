@@ -53,6 +53,15 @@
         android:text="Don't have and accout? Sign UP"
         android:background="@color/colorPrimaryDark"
         android:textColor="@color/colorWhite"/>
+
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:id="@+id/button_forgot_password"
+            android:text="Forgot password?"
+            android:background="@color/colorPrimaryDark"
+            android:textColor="@color/colorWhite"/>
     </LinearLayout>
 
 </FrameLayout>

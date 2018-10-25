@@ -18,13 +18,15 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseUser;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    EditText user_, password_;
-    View view;
-    Button register_,signIn_;
-    Toolbar toolbar_;
+    private EditText user_, password_;
+    private View view;
+    private Button register_,signIn_;
+    private Toolbar toolbar_;
 
     FirebaseAuth mAuth;
 
@@ -101,10 +103,40 @@ public class RegisterActivity extends AppCompatActivity {
                         {
                             Toast.makeText(getApplicationContext(), "User registered successfully",
                                     Toast.LENGTH_SHORT).show();
+                            FirebaseUser u = mAuth.getCurrentUser();
+                            sendVerification(u);
                             getBackToSignIn();
+                        }
+                        else
+                        {
+                            if (task.getException() instanceof FirebaseAuthUserCollisionException) {
+                                Toast.makeText(getApplicationContext(), "You are already registered",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                            else {
+                                Toast.makeText(getApplicationContext(), "Some error occurred",
+                                        Toast.LENGTH_SHORT).show();
+                            }
                         }
                     }
                 });
+    }
+
+    private void sendVerification(FirebaseUser user)
+    {
+        Task<Void> verification_email_sent_to_ = user.sendEmailVerification().addOnCompleteListener(this, new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task_) {
+                if (task_.isSuccessful()) {
+                    Toast.makeText(getApplicationContext(), "Verification email sent ",
+                            Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(),
+                            "Failed to send verification email.",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     public void getBackToSignIn()
