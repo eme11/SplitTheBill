@@ -14,8 +14,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_about" />
-                            <entry key="sourceFile" value="C:\Users\EmeseMathe\Documents\icons_msa\icons8-about.svg" />
+                            <entry key="outputName" value="ic_logout" />
+                            <entry key="sourceFile" value="C:\Users\EmeseMathe\Documents\icons_msa\logout.svg" />
                           </map>
                         </option>
                       </PersistentState>

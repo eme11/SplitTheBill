@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity
     private AboutFragment about_;
     private SettingsFragment settings_;
     private MyApartmentFragment myApartmentFragment_;
+    private FirebaseAuth mauth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,7 +127,13 @@ public class MainActivity extends AppCompatActivity
             setTitle("Create Apartment");
             manager = getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.flContent, createApartment_ ).commit();
-
+        } else if (id == R.id.nav_sign_out){
+            FirebaseAuth.getInstance().signOut();
+            Toast.makeText(getApplicationContext(), "Signing out ",
+                    Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, SignInActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
         }
 
         item.setChecked(true);

@@ -42,6 +42,10 @@
                 android:id="@+id/nav_create_apartment"
                 android:icon="@drawable/ic_add"
                 android:title="Create Apartment" />
+            <item
+                android:id="@+id/nav_sign_out"
+                android:icon="@drawable/ic_logout"
+                android:title="Sign out" />
         </menu>
     </item>
 
