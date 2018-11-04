@@ -16,9 +16,11 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:paddingBottom="15dp"
-            android:textSize="30dp"
-            android:text="Not available yet!"
+            android:textSize="25dp"
+            android:id="@+id/current_email_account"
+            android:text=""
             android:textAlignment="center"/>
+
 
     </LinearLayout>
 

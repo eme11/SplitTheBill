@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity
     private AboutFragment about_;
     private SettingsFragment settings_;
     private MyApartmentFragment myApartmentFragment_;
-    private FirebaseAuth mauth;
+    private AccountFragment accountFragment_;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +63,7 @@ public class MainActivity extends AppCompatActivity
         about_ = new AboutFragment();
         settings_ = new SettingsFragment();
         myApartmentFragment_ = new MyApartmentFragment();
+        accountFragment_ = new AccountFragment();
 
         setTitle("About");
         manager = getSupportFragmentManager();
@@ -95,7 +96,8 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_user) {
 
             setTitle("Account");
-
+            manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(R.id.flContent, accountFragment_).commit();
 
         } else if (id == R.id.nav_apartment) {
             setTitle("Apartment");

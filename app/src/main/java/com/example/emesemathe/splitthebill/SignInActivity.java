@@ -45,7 +45,7 @@ public class SignInActivity extends AppCompatActivity{
         password_ = (EditText) findViewById(R.id.password_sign_in);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-        if(user !=null)
+        if(user != null && user.isEmailVerified())
             changeToMenuAcitvity();
 
         buttonRegister_ = (Button) findViewById(R.id.button_sign_up);
@@ -147,34 +147,45 @@ public class SignInActivity extends AppCompatActivity{
         });
     }
 
-    public void changeToRegisterActivity()
+    private void changeToRegisterActivity()
     {
         Intent intentRegister = new Intent(this, RegisterActivity.class);
         startActivity(intentRegister);
     }
 
-    public void changeToMenuAcitvity()
+    private void changeToMenuAcitvity()
     {
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
 
-    public void resetPassword()
-    {
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-        FirebaseUser ur = auth.getCurrentUser();
-        String emailAddress = ur.getEmail();
+    private void resetPassword() {
+        //String emailAddress = ur.getEmail();
+        String emailAddress = user_.getText().toString().trim();
 
-        auth.sendPasswordResetEmail(emailAddress)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(getApplicationContext(), "Password reset email sent ",
-                                    Toast.LENGTH_SHORT).show();
+        if (!emailAddress.isEmpty()) {
+
+            mAuth.sendPasswordResetEmail(emailAddress)
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(getApplicationContext(), "Password reset email sent ",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                            else
+                            {
+                                Toast.makeText(getApplicationContext(), "An error occurred, try again ",
+                                        Toast.LENGTH_SHORT).show();
+                            }
                         }
-                    }
-                });
+                    });
+        }
+        else{
+
+            Toast.makeText(getApplicationContext(), "Enter your email first",
+                    Toast.LENGTH_SHORT).show();
+        }
     }
 }
