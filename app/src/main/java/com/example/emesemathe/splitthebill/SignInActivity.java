@@ -161,7 +161,6 @@ public class SignInActivity extends AppCompatActivity{
     }
 
     private void resetPassword() {
-        //String emailAddress = ur.getEmail();
         String emailAddress = user_.getText().toString().trim();
 
         if (!emailAddress.isEmpty()) {
