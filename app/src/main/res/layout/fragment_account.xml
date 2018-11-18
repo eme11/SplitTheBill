@@ -21,6 +21,15 @@
             android:text=""
             android:textAlignment="center"/>
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:id="@+id/button_change"
+            android:text="Change username"
+            android:background="@color/colorPrimaryDark"
+            android:textColor="@color/colorWhite"/>
+
 
     </LinearLayout>
 

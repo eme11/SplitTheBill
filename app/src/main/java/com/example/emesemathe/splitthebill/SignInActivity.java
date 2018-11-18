@@ -98,13 +98,6 @@ public class SignInActivity extends AppCompatActivity{
             return;
         }
 
-        if(pass.length() < 8)
-        {
-            password_.setError("The minimum length for password is 8 characters!");
-            password_.requestFocus();
-            return;
-        }
-
         mAuth.signInWithEmailAndPassword(user, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {

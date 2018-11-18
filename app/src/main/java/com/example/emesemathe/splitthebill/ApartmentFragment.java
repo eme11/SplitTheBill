@@ -38,9 +38,11 @@ public class ApartmentFragment extends Fragment{
         rent_ = (EditText) v.findViewById(R.id.add_apartment_rent);
 
         createApartment = (Button) v.findViewById(R.id.button_create_apartment);
-        createApartment.setOnClickListener(new View.OnClickListener() {
+        createApartment.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 createApartmentForDataBase();
             }
         });
@@ -51,6 +53,12 @@ public class ApartmentFragment extends Fragment{
     private void createApartmentForDataBase()
     {
         checkFields();
+        Toast.makeText(getActivity().getApplicationContext(),
+                "Some Message In Activity.", Toast.LENGTH_SHORT).show();
+        // adding apartment to the data base
+        // creating Apartment class???
+        //  same for user -> adding unique username
+        // adding phone number
     }
 
     private void checkFields()

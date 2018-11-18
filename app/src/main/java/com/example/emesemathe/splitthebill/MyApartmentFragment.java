@@ -14,8 +14,8 @@ import android.widget.Button;
  */
 public class MyApartmentFragment extends Fragment implements View.OnClickListener {
 
-    Button btn_leave;
-    Button btn_add;
+    Button buttonLeave_;
+    Button buttonAddUsers_;
 
     public MyApartmentFragment() {
         // Required empty public constructor
@@ -24,20 +24,22 @@ public class MyApartmentFragment extends Fragment implements View.OnClickListene
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                             Bundle savedInstanceState)
+    {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_my_apartment, container, false);
 
-        btn_add = (Button) v.findViewById(R.id.button_send_invite_my_apartment);
-        btn_leave = (Button) v.findViewById(R.id.button_leave_my_apartment);
+        buttonAddUsers_ = (Button) v.findViewById(R.id.button_send_invite_my_apartment);
+        buttonLeave_ = (Button) v.findViewById(R.id.button_leave_my_apartment);
 
-        btn_add.setOnClickListener(this);
-        btn_leave.setOnClickListener(this);
+        buttonAddUsers_.setOnClickListener(this);
+        buttonLeave_.setOnClickListener(this);
         return v;
     }
 
     @Override
-    public void onClick(View v) {
+    public void onClick(View v)
+    {
         switch (v.getId())
         {
             case R.id.button_send_invite_my_apartment:
