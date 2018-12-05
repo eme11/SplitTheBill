@@ -6,10 +6,14 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import java.util.ArrayList;
 
 
 /**
@@ -17,9 +21,10 @@ import com.google.firebase.auth.FirebaseUser;
  */
 public class AccountFragment extends Fragment {
 
-    private TextView textView;
     private FirebaseAuth math;
     private FirebaseUser user_;
+
+    private ListView userInformation_;
 
     public AccountFragment() {
         // Required empty public constructor
@@ -34,10 +39,15 @@ public class AccountFragment extends Fragment {
         math = FirebaseAuth.getInstance();
         user_ = math.getCurrentUser();
 
-        textView = (TextView) v.findViewById(R.id.current_email_account);
-        String str = "Your current email is " + user_.getEmail();
+        userInformation_ = v.findViewById(R.id.user_information);
 
-        textView.setText(str);
+        ArrayList<String> arrayList = new ArrayList<>();
+        arrayList.add("Something random");
+        arrayList.add("Something random");
+        arrayList.add("Something random");
+
+        ArrayAdapter adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, arrayList);
+        userInformation_.setAdapter(adapter);
 
         return v;
     }

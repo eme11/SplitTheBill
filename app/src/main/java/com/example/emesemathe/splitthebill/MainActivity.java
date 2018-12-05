@@ -42,10 +42,7 @@ public class MainActivity extends AppCompatActivity
     private MyApartmentFragment myApartmentFragment_;
     private AccountFragment accountFragment_;
 
-    private User currentUser_;
-
-
-    @Override
+     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
