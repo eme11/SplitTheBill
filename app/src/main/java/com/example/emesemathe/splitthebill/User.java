@@ -10,7 +10,7 @@ public class User {
         return emailAddress_;
     }
 
-    public String getUserName() {
+    public String getUserName_() {
         return userName_;
     }
 
@@ -22,8 +22,18 @@ public class User {
         return idUser_;
     }
 
-    public void setUserName(String userName) {
-        this.userName_ = userName;
+    public void setEmailAddress_(String emailAddress_) {
+        this.emailAddress_ = emailAddress_;
+    }
+
+    public void setUserName_(String userName_) {
+
+        this.userName_ = userName_;
+    }
+
+    public String toString()
+    {
+        return emailAddress_  + " " + phoneNumber_ + " " + userName_;
     }
 
     public void setPhoneNumber_(String phoneNumber_) {
@@ -35,5 +45,13 @@ public class User {
         this.userName_ = name_;
         this.phoneNumber_ = phone_;
         this.idUser_ = id_;
+    }
+
+    public User()
+    {
+        this.emailAddress_ = "Not set";
+        this.userName_ = "Not set";
+        this.phoneNumber_ = "Not set";
+        this.idUser_ = "Not set";
     }
 }
