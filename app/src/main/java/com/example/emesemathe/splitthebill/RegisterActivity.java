@@ -194,7 +194,8 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void createUserInDataBase()
     {
-        String id = mRef_.push().getKey();
+        FirebaseUser user = mAuth.getCurrentUser();
+        String id = user.getUid();
         String email = user_.getText().toString().trim();
         String name = userName_.getText().toString().trim();
         String phone = phoneNumber_.getText().toString().trim();
