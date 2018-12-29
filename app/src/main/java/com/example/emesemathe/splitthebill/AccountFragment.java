@@ -32,6 +32,9 @@ public class AccountFragment extends Fragment {
     private String userId_;
     private User currentUser_;
 
+    private FirebaseAuth mAuth_;
+    private DatabaseReference mRef_;
+
     public AccountFragment() {
         // Required empty public constructor
     }
@@ -42,6 +45,7 @@ public class AccountFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_account, container, false);
+        mAuth_ = FirebaseAuth.getInstance();
 
         userInformation_ = v.findViewById(R.id.user_information);
 
@@ -53,9 +57,9 @@ public class AccountFragment extends Fragment {
     @SuppressWarnings("unchecked")
     void dataBaseHandling()
     {
-        FirebaseAuth mAuth_ = FirebaseAuth.getInstance();
+        mAuth_ = FirebaseAuth.getInstance();
         userId_ = mAuth_.getCurrentUser().getUid();
-        DatabaseReference mRef_ = FirebaseDatabase.getInstance().getReference("users");
+        mRef_ = FirebaseDatabase.getInstance().getReference("users");
         currentUser_ = new User();
 
        mRef_.addValueEventListener(new ValueEventListener() {
