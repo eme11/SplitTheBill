@@ -30,12 +30,23 @@ public class Apartment
         return rent_;
     }
 
-    public Apartment(String id_, String name_, String address_, double rent_)
+    public Apartment(String id_, String name_, String address_, String rent_)
     {
         this.idApartment_ = id_;
         this.name_ = name_;
         this.address_ = address_;
-        this.rent_ = rent_;
+        this.rent_ = Double.parseDouble(rent_);
+        userId_ = new ArrayList<>();
+    }
+
+    public Apartment(String id_, String name_, String address_, String rent_, String uid_)
+    {
+        this.idApartment_ = id_;
+        this.name_ = name_;
+        this.address_ = address_;
+        this.rent_ = Double.parseDouble(rent_);
+        userId_ = new ArrayList<>();
+        userId_.add(uid_);
     }
 
     public ArrayList<String> getUserId_()
@@ -46,5 +57,20 @@ public class Apartment
     public void addUsers(String userId)
     {
         userId_.add(userId);
+    }
+
+    public boolean conatins(String uid)
+    {
+        return userId_.contains(uid);
+    }
+
+    public void addId(String uid)
+    {
+        userId_.add(uid);
+    }
+
+    public void removeId(String uid)
+    {
+        userId_.remove(uid);
     }
 }

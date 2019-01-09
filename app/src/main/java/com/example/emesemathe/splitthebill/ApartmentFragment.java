@@ -4,12 +4,18 @@ package com.example.emesemathe.splitthebill;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 /**
@@ -21,6 +27,9 @@ public class ApartmentFragment extends Fragment{
     private Button createApartment;
 
     private EditText name_, address_, rent_;
+
+    private DatabaseReference mRef;
+    private FirebaseAuth mAuth;
 
     public ApartmentFragment() {
         // Required empty public constructor
@@ -53,12 +62,29 @@ public class ApartmentFragment extends Fragment{
     private void createApartmentForDataBase()
     {
         checkFields();
+
+        addToDataBase();
+
         Toast.makeText(getActivity().getApplicationContext(),
-                "Some Message In Activity.", Toast.LENGTH_SHORT).show();
-        // adding apartment to the data base
-        // creating Apartment class???
-        //  same for user -> adding unique username
-        // adding phone number
+                "Creation successful.", Toast.LENGTH_SHORT).show();
+    }
+
+    private void addToDataBase()
+    {
+        String name = name_.getText().toString().trim();
+        String address = address_.getText().toString().trim();
+        String  rent = rent_.getText().toString().trim();
+
+        mRef = FirebaseDatabase.getInstance().getReference("apartmentList");
+
+        String id = mRef.push().getKey();
+
+        mAuth = FirebaseAuth.getInstance();
+        String uid = mAuth.getCurrentUser().getUid();
+
+        Apartment tmp = new Apartment(id, name, address, rent, uid);
+
+        mRef.child(id).setValue(tmp);
     }
 
     private void checkFields()

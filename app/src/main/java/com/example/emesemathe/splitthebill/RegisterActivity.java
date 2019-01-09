@@ -151,7 +151,8 @@ public class RegisterActivity extends AppCompatActivity {
 
                             sendVerification(u);
                             createUserInDataBase();
-                            //getBackToSignIn();
+                            clearFields();
+
                         }
                         else
                         {
@@ -166,6 +167,15 @@ public class RegisterActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    private void clearFields()
+    {
+        user_.getText().clear();
+        password_.getText().clear();
+        phoneNumber_.getText().clear();
+        passwordRe_.getText().clear();
+        userName_.getText().clear();
     }
 
     private void sendVerification(FirebaseUser user)
