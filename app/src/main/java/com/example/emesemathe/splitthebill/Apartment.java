@@ -1,8 +1,11 @@
 package com.example.emesemathe.splitthebill;
 
+import android.widget.ProgressBar;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Apartment
+public class Apartment implements Serializable
 {
     private String idApartment_;
     private String name_;
