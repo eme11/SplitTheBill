@@ -4,6 +4,7 @@ package com.example.emesemathe.splitthebill;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -31,6 +32,7 @@ public class ApartmentFragment extends Fragment{
 
     private DatabaseReference mRef;
     private FirebaseAuth mAuth;
+    private Apartment apartment;
 
     public ApartmentFragment() {
         // Required empty public constructor
@@ -70,21 +72,6 @@ public class ApartmentFragment extends Fragment{
                 "Creation successful.", Toast.LENGTH_SHORT).show();
     }
 
-    private void trasmitApartment(Apartment apartment)
-    {
-        FragmentTransaction ft =  getActivity().getSupportFragmentManager().beginTransaction();
-        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-        MyApartmentFragment fragment2 = new MyApartmentFragment();
-
-        Bundle bundle = new Bundle();
-        Apartment obj = apartment;
-        bundle.putSerializable("apartment", obj);
-        fragment2.setArguments(bundle);
-        ft.replace(android.R.id.content, fragment2);
-        ft.addToBackStack(null);
-        ft.commit();
-    }
-
     private void addToDataBase()
     {
         String name = name_.getText().toString().trim();
@@ -101,7 +88,6 @@ public class ApartmentFragment extends Fragment{
         Apartment tmp = new Apartment(id, name, address, rent, uid);
 
         mRef.child(id).setValue(tmp);
-        trasmitApartment(tmp);
     }
 
     private void checkFields()

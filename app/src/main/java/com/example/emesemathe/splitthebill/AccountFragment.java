@@ -80,16 +80,16 @@ public class AccountFragment extends Fragment {
         });
     }
 
+    @SuppressWarnings("unchecked")
     private void updateingUserInformation(DataSnapshot dataSnapshot)
     {
-        User user = dataSnapshot.child(userId_).getValue(User.class);
-        currentUser_ = user;
+        currentUser_ = dataSnapshot.child(userId_).getValue(User.class);
         Log.i("Data Base get user:" , currentUser_.toString());
 
         ArrayList<String> arrayList = new ArrayList<>();
-        arrayList.add(user.getEmailAddress_());
-        arrayList.add(user.getUserName_());
-        arrayList.add(user.getPhoneNumber_());
+        arrayList.add(currentUser_.getEmailAddress_());
+        arrayList.add(currentUser_.getUserName_());
+        arrayList.add(currentUser_.getPhoneNumber_());
 
         ArrayAdapter adapter = new ArrayAdapter(getActivity(),android.R.layout.simple_list_item_1, arrayList);
         userInformation_.setAdapter(adapter);
