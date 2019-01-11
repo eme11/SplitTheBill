@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
 
@@ -30,10 +31,10 @@ public class MyApartmentFragment extends Fragment{
 
     Button buttonLeave_;
     Button buttonAddUsers_;
+    private EditText email_;
 
     private ExpandableListView peopleList_;
     private Apartment apartment;
-    private String aparmentId;
     private ArrayList<User> usersList;
     private ArrayList<String> ids;
 
@@ -52,6 +53,7 @@ public class MyApartmentFragment extends Fragment{
         buttonAddUsers_ = (Button) v.findViewById(R.id.button_send_invite_my_apartment);
         buttonLeave_ = (Button) v.findViewById(R.id.button_leave_my_apartment);
         peopleList_ = v.findViewById(R.id.people_list);
+        email_ = v.findViewById(R.id.email_add_people_my_apartment);
 
         usersList = new ArrayList<>();
         apartment = new Apartment();
@@ -74,15 +76,58 @@ public class MyApartmentFragment extends Fragment{
         return v;
     }
 
-    private void removeUser() {
+    private void removeUser()
+    {
+        DatabaseReference mRef_ = FirebaseDatabase.getInstance().getReference("apartmentList");
+
+        apartment.removeId(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        mRef_.child(apartment.getIdApartment_()).setValue(apartment);
+
+
     }
 
-    private void addUsers() {
+    private void addUsers()
+    {
+        final DatabaseReference mRef_ = FirebaseDatabase.getInstance().getReference("apartmentList");
+        DatabaseReference mRefUser_ = FirebaseDatabase.getInstance().getReference("users");
+
+        mRefUser_.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String e = email_.getText().toString().trim();
+                User user;
+                for(DataSnapshot data : dataSnapshot.getChildren())
+                {
+                    String uid = data.getKey();
+
+                    Log.i("My Apartment", data.getKey());
+                    user = dataSnapshot.child(uid).getValue(User.class);
+                    Log.i("My Apartment", user.toString());
+
+                    if(user.getEmailAddress_().equals(e))
+                    {
+                        Log.i("My Apartment", "Email match found!");
+                        apartment.addId(user.getIdUser_());
+                        Log.i("My Apartment", "Adding to dataBase... ");
+                        mRef_.child(apartment.getIdApartment_()).setValue(apartment);
+                        break;
+                    }
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        showExtendedList();
     }
 
     private void showExtendedList()
     {
         Log.i("My Apartment", "show extended list");
+
         ExpendableListViewAdapterApartment adapterApartment =
                 new ExpendableListViewAdapterApartment(getActivity().getApplicationContext(),
                         initilizaHeader(), initilizeUserInforamtion());
@@ -166,7 +211,6 @@ public class MyApartmentFragment extends Fragment{
         Log.i("My Apartment ", "retireve Apartment");
         DatabaseReference mRef_ = FirebaseDatabase.getInstance().getReference("apartmentList");
         final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        Log.i("My Apartment ", "uid: " + uid);
 
         mRef_.addValueEventListener(new ValueEventListener() {
             @Override
@@ -194,7 +238,8 @@ public class MyApartmentFragment extends Fragment{
         Log.i("My Apartment ", "retireve AUID");
         boolean found = false;
         String key = null;
-        for (DataSnapshot aid: dataSnapshot.getChildren())
+        Iterable<DataSnapshot> children = dataSnapshot.getChildren();
+        for (DataSnapshot aid: children)
         {
             key = aid.getKey();
             Log.i("My Apartment ", "key: " + key);
@@ -217,7 +262,8 @@ public class MyApartmentFragment extends Fragment{
     {
         Log.i("My Apartment", "Has child");
         boolean ret = false;
-        for(DataSnapshot snapshot: dataSnapshot.getChildren())
+        Iterable<DataSnapshot> children = dataSnapshot.getChildren();
+        for (DataSnapshot snapshot: children)
         {
             ret = snapshot.getValue().equals(uid);
             apartment.addId((String) snapshot.getValue());

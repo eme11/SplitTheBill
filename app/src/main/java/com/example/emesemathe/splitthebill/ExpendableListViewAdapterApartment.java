@@ -32,7 +32,7 @@ public class ExpendableListViewAdapterApartment extends BaseExpandableListAdapte
 
     @Override
     public int getGroupCount() {
-        return userName_.size();
+        return userName_ != null ? userName_.size() : 0 ;
     }
 
     @Override
