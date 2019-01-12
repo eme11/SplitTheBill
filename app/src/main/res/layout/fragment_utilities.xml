@@ -30,15 +30,6 @@
             android:background="@color/colorPrimaryDark"
             android:textColor="@color/colorWhite"/>
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:id="@+id/button_view_list_of_supplies"
-            android:text="VIEW LIST OF HOUSEHOLD SUPPLIES"
-            android:background="@color/colorPrimaryDark"
-            android:textColor="@color/colorWhite"/>
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -89,6 +80,15 @@
             android:text="ADD"
             android:background="@color/colorPrimaryDark"
             android:textColor="@color/colorWhite"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:id="@+id/button_view_list_of_supplies"
+            android:text="VIEW LIST OF HOUSEHOLD SUPPLIES"
+            android:background="@color/transparent"
+            android:textColor="@color/colorPrimaryDark"/>
 
 
 

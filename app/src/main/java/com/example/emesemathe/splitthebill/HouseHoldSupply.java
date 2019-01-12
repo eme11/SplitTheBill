@@ -2,16 +2,21 @@ package com.example.emesemathe.splitthebill;
 
 public class HouseHoldSupply {
     private String uid_;
-    private String aid_;
     private double price_;
     private String name_;
 
-    public HouseHoldSupply(String aid, String uid, String name, double price)
+    public HouseHoldSupply( String uid, String name, String price)
     {
-        aid_ = aid;
         uid_ = uid;
         name_ = name;
-        price_ = price;
+        price_ = Double.parseDouble(price);
+    }
+
+    public HouseHoldSupply()
+    {
+        uid_ = "Not set";
+        name_ = "Not set";
+        price_ = 0.0;
     }
 
     public String getUid_() {
@@ -22,20 +27,14 @@ public class HouseHoldSupply {
         this.uid_ = uid_;
     }
 
-    public String getAid_() {
-        return aid_;
-    }
-
-    public void setAid_(String aid_) {
-        this.aid_ = aid_;
-    }
-
-    public double getPrice_() {
+    public double getPrice_()
+    {
         return price_;
     }
 
-    public void setPrice_(double price_) {
-        this.price_ = price_;
+
+    public void setPrice_(double price) {
+        price_ = price;
     }
 
     public String getName_() {
@@ -44,5 +43,10 @@ public class HouseHoldSupply {
 
     public void setName_(String name_) {
         this.name_ = name_;
+    }
+
+    public String toString()
+    {
+        return "n: " + name_ + " p: " + price_ + " uid: " + uid_;
     }
 }
