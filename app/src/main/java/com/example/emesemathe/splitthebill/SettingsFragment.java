@@ -50,7 +50,7 @@ public class SettingsFragment extends Fragment {
 
     private void updateListView()
     {
-        final ArrayList<String> arrayList = new ArrayList<>();
+        ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add("Change Password");
         arrayList.add("Change Email");
         arrayList.add("Change Phone Number");
