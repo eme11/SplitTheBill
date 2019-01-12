@@ -80,10 +80,11 @@ public class MyApartmentFragment extends Fragment{
     {
         DatabaseReference mRef_ = FirebaseDatabase.getInstance().getReference("apartmentList");
 
-        apartment.removeId(FirebaseAuth.getInstance().getCurrentUser().getUid());
-        mRef_.child(apartment.getIdApartment_()).setValue(apartment);
+        Apartment tmp = new Apartment(apartment);
+        tmp.removeId(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        mRef_.child(apartment.getIdApartment_()).setValue(tmp);
 
-
+        apartment = tmp;
     }
 
     private void addUsers()
@@ -91,7 +92,7 @@ public class MyApartmentFragment extends Fragment{
         final DatabaseReference mRef_ = FirebaseDatabase.getInstance().getReference("apartmentList");
         DatabaseReference mRefUser_ = FirebaseDatabase.getInstance().getReference("users");
 
-        mRefUser_.addListenerForSingleValueEvent(new ValueEventListener() {
+        mRefUser_.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String e = email_.getText().toString().trim();
@@ -107,9 +108,11 @@ public class MyApartmentFragment extends Fragment{
                     if(user.getEmailAddress_().equals(e))
                     {
                         Log.i("My Apartment", "Email match found!");
-                        apartment.addId(user.getIdUser_());
+                        Apartment tmp = new Apartment(apartment);
+                        tmp.addId(user.getIdUser_());
                         Log.i("My Apartment", "Adding to dataBase... ");
-                        mRef_.child(apartment.getIdApartment_()).setValue(apartment);
+                        mRef_.child(apartment.getIdApartment_()).setValue(tmp);
+                        apartment = tmp;
                         break;
                     }
 

@@ -46,6 +46,16 @@ public class Apartment implements Serializable
         }
     }
 
+    public Apartment(Apartment a)
+    {
+        idApartment_ = a.idApartment_;
+        name_ = a.name_;
+        rent_ = a.rent_;
+        address_ = a.address_;
+        userId_ = new ArrayList<>();
+        setUserId_(a.userId_);
+    }
+
     public Apartment(String id_, String name_, String address_, String rent_, String uid_)
     {
         this.idApartment_ = id_;
