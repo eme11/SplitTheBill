@@ -151,7 +151,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                             sendVerification(u);
                             createUserInDataBase();
-                            clearFields();
+                            // clearFields();
 
                         }
                         else

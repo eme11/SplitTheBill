@@ -79,6 +79,7 @@ public class MyApartmentFragment extends Fragment{
     private void removeUser()
     {
         DatabaseReference mRef_ = FirebaseDatabase.getInstance().getReference("apartmentList");
+        Log.i("My Apartment", "Removing from Database...");
 
         Apartment tmp = new Apartment(apartment);
         tmp.removeId(FirebaseAuth.getInstance().getCurrentUser().getUid());
