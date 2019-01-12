@@ -121,7 +121,6 @@ public class MyApartmentFragment extends Fragment{
 
             }
         });
-        showExtendedList();
     }
 
     private void showExtendedList()
@@ -238,15 +237,16 @@ public class MyApartmentFragment extends Fragment{
         Log.i("My Apartment ", "retireve AUID");
         boolean found = false;
         String key = null;
-        Iterable<DataSnapshot> children = dataSnapshot.getChildren();
-        for (DataSnapshot aid: children)
+        for (DataSnapshot aid: dataSnapshot.getChildren())
         {
             key = aid.getKey();
             Log.i("My Apartment ", "key: " + key);
             DataSnapshot s =aid.child("userId_");
             found = hasChild(s, uid);
+            Log.i("My Apartment ", "AFTER hasChild return: " + found);
             if (found)
             {
+                Log.i("My Apartment ", "Apartment found");
                 apartment.setIdApartment_(aid.getValue(Apartment.class).getIdApartment_());
                 apartment.setName_(aid.getValue(Apartment.class).getName_());
                 apartment.setAddress_(aid.getValue(Apartment.class).getAddress_());
@@ -261,14 +261,34 @@ public class MyApartmentFragment extends Fragment{
     private boolean hasChild(DataSnapshot dataSnapshot,String uid)
     {
         Log.i("My Apartment", "Has child");
+        ArrayList<String> thisIds = new ArrayList<>();
         boolean ret = false;
-        Iterable<DataSnapshot> children = dataSnapshot.getChildren();
-        for (DataSnapshot snapshot: children)
+        boolean onceTrue = false;
+        long childrenNo = dataSnapshot.getChildrenCount();
+        for (DataSnapshot snapshot: dataSnapshot.getChildren())
         {
-            ret = snapshot.getValue().equals(uid);
-            apartment.addId((String) snapshot.getValue());
+            String string = (String) snapshot.getValue();
+            ret = string.equals(uid);
+            if( ret == true)
+                onceTrue = true;
+            thisIds.add((String) snapshot.getValue());
+            Log.i("My Apartment- userId_", (String) snapshot.getValue());
+            Log.i("My Apartment- userId_", uid);
+            Log.i("My Apartment- userId_", "equals: " + ret);
+
+            long key = Long.parseLong(snapshot.getKey());
+            Log.i("My Apartment", key + "");
+            Log.i("My Apartment", childrenNo + "");
+
+            if(onceTrue && key == (childrenNo - 1))
+            {
+                Log.i("My Apartment", "TRUE");
+                apartment.setUserId_(thisIds);
+            }
+
+            // if(onceTrue && childrenNo == snapshot.getKey())
         }
-        return ret;
+        return onceTrue;
     }
 
 

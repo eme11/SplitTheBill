@@ -116,6 +116,11 @@ public class Apartment implements Serializable
         userId_.remove(uid);
     }
 
+    public void addAllIDs(ArrayList<String> i)
+    {
+        userId_.addAll(i);
+    }
+
     public String toString()
     {
         return "N:" + name_ + "A:" + address_ + "r:" + rent_ + "uid[0]" + userId_.get(0);
