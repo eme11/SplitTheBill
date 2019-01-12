@@ -53,6 +53,7 @@ public class SettingsFragment extends Fragment {
         final ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add("Change Password");
         arrayList.add("Change Email");
+        arrayList.add("Change Phone Number");
         arrayList.add("Change Theme");
 
         ArrayAdapter adapter = new ArrayAdapter(getActivity(),android.R.layout.simple_list_item_1, arrayList);
@@ -70,6 +71,9 @@ public class SettingsFragment extends Fragment {
                         handeleEmailUpdate();
                         break;
                     case 2:
+                        handlePhoneNumberChange();
+                        break;
+                    case 3:
                         handeleThemeChange();
                         break;
                 }
@@ -177,6 +181,23 @@ public class SettingsFragment extends Fragment {
         popUp.setView(view);
 
         popUp.setTitle("Change email");
+
+        AlertDialog alertDialog = popUp.create();
+        alertDialog.show();
+    }
+
+    @SuppressWarnings("unsafe")
+    private void handlePhoneNumberChange()
+    {
+        AlertDialog.Builder popUp = new AlertDialog.Builder(getActivity());
+
+        LayoutInflater layout = getLayoutInflater();
+
+        final View view = layout.inflate(R.layout.latyout_email_change, null);
+
+        popUp.setView(view);
+
+        popUp.setTitle("Change phone number");
 
         AlertDialog alertDialog = popUp.create();
         alertDialog.show();
